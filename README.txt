@@ -1,4 +1,4 @@
-###Stomatološka ordinacija
+##**Stomatološka ordinacija**
 
 Amra Mujcinovic - 16947
 
@@ -7,9 +7,10 @@ Stranica sluzi za informisanje vezano za usluge koje pruza
 ordinacija.
 
 
-##PRVA SPIRALA:
+###**PRVA SPIRALA:**
 
-__________________________Sta je uradeno?_____________________________
+
+####**Sta je uradeno?**
 - mockup-ovi
 - 5 stranica koje su responzivne i imaju grid-view
 - izgled za mobilne uredaje koristeci media query-e
@@ -17,11 +18,13 @@ __________________________Sta je uradeno?_____________________________
 - meni koji je vidljiv na svim podstranicama
 - izgled stranice je konzistentan, elementi na stranici su poravnati
 
-_______________________Sta nije uradeno i Bug-ovi____________________________
+
+####**Sta nije uradeno i Bug-ovi**
 
 Nisam primjetila bug-ove.
 
-________________________Lista fajlova_________________________________________
+
+####**Lista fajlova**
 
 Folder mockup - sadrzi skice svih stranica: 
 Fotogalerija 
