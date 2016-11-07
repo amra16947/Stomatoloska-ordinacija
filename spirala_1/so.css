@@ -1,0 +1,203 @@
+* {
+  margin:0px auto;
+  padding:0px;
+  text-decoration:none;
+
+
+}
+body
+{
+	background-image: url("pozadina1.jpg");
+}
+
+#okvir
+{
+	
+	margin-bottom: 4%;
+	background-size:cover;
+	overflow-y: auto;
+
+	
+	
+}
+
+#zaglavlje
+{
+	margin-left: 0%;
+	margin-right: 0%;
+	background-image: url("pozadina.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+    width:100%;	
+}
+
+h1{
+	
+	text-align:center;	
+	font-style: italic;
+	font-family:"Lucida Console", Monaco, monospace;
+}
+
+.meni
+{   
+ 
+	position: relative;
+	margin-bottom: 0%;
+}
+
+li {
+	margin-bottom: 0%;
+	display:inline;
+}
+
+.button
+{
+	background-color: 	#1E90FF;
+	text-align: center;
+	color: white;
+	display: inline-block;
+	border-bottom-color: black;
+	font-size: 20px;
+	margin: 0%;
+	width: 19.0%;
+	cursor: pointer;
+	
+	
+	
+}
+
+#glavni
+{
+	margin-top: 0%;
+	margin-left: 2%;
+	margin-right: 2%;
+	background-size: cover;
+
+	
+	
+		
+}
+
+.drugi{
+	margin:0%;
+	margin-right:1%;
+	margin-bottom:2%;
+	width:38%;
+	float:right;
+	height: 100%;
+
+}
+
+.prvi{
+	margin:0%;
+	width:58%;
+	margin-left:1%;
+	margin-bottom:2%;
+	float:left;
+	height: 100%;
+}
+
+p
+{
+	font-size: 20px;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+#potpis
+{
+	text-align: right;
+	font-size: 20px;
+	margin-right: 1%;
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+	
+	#okvir
+{
+	margin-bottom: 4%;
+	height: 700px;
+	overflow-y: auto;
+	
+	
+}
+li  {
+	margin-bottom: 0%;
+	display: inline;
+	font-size: 80%;
+}
+	
+	#zaglavlje
+	{
+		height: 15%;
+	}
+	
+		#potpis
+{
+	font-size: 50%;
+}
+p
+{
+	font-size: 60%;
+	
+}
+
+
+.meni
+{
+font-size: 80%;	
+margin-bottom: 0%;
+margin-top: 0%;
+height: 15%;
+
+}
+.button
+{
+    background-color: 	#1E90FF;
+	text-align: center;
+	color: white;
+	display: inline-block;
+	border-bottom-color: black;
+	font-size: 85%;
+	margin: 0%;
+	width: 19.0%;
+	cursor: pointer;
+
+		
+}
+.prvi{
+	margin:0%;
+	width:58%;
+	margin-left:1%;
+	float:left;
+	height: 100%;
+}
+
+.drugi{
+	margin:0%;
+	margin-right:1%;
+	width:38%;
+	float:right;
+	height: 100%;
+
+}
+
+#glavni
+{
+	margin-top: 0%;
+	margin-left: 2%;
+	margin-right: 2%;
+	background-size: cover;
+	
+		
+}
+
+h1
+{
+	font-size: 80%;
+
+}
+}
