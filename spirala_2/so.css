@@ -473,7 +473,7 @@ h3
 	height: 100%; 
 	margin: 0; 
 	padding: 0;
-	/*position: fixed;*/
+
 	
 }
 
@@ -888,6 +888,25 @@ h3
 	width: 80%;
 	height: 20%;
 	margin-left:10%;
+}
+
+#VelikaSlika
+{
+	display: none;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+    position: fixed;
+    z-index: 100;
+	background-color: rgba(100, 100, 100, 0.7);
+}
+
+#slikaV
+{
+	height: 100%; 
+	margin: 0; 
+	padding: 0;
+	
 }
 
 }

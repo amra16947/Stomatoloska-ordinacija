@@ -54,10 +54,26 @@ korisnisavjeti.css
 fotogalerija.css
 kontakt.css
 
+_________________________________________________________________________________________
 
+DRUGA SPIRALA:
 
+I  - Sta je uradeno?
+-sva polja formi imaju JavaScript validaciju, nevalidan unos onemogucava submit i ispisuje
+se poruka
+-Dropdown meni
+-Galerija slika uradena na stranici Fotogalerija sa opcijom raširi sliku preko cijelog ekrana
+-Ajax uraden -pocetna stranica je Naslovna.html ostale su podstranice
+-JavaScript je odvojen u posebne fajlove
+-
 
+II  - Šta nije uradeno?
+III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
+IV  - Bug-ovi koje ste primijetili ali ne znate rješenje
 
+V  - Lista fajlova u formatu NAZIVFAJLA - Opis u vidu jedne recenice šta se u fajlu nalazi
 
-
-
+sprala_2 - sadrzi JavaScript fajlove, html, css i sve pratece slike
+validacija.js - funkcije vezane za validaciju
+funkcije.js - nalaze se funkcije za ajax i galeriju
+Novosti.html - glavna stranica, ostalo su podstranice 
