@@ -19,6 +19,36 @@
 <body>
 <?php
 
+$poruka = "";
+   $poruka1 = "";
+   
+   function test_input($data)
+	{
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+
+ 	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		if(empty($_POST['biljeske']) || empty($_POST['terapija']) )
+		{
+			$poruka1="Popunite oba polja!";
+		}
+		else
+		{
+			$naslov = test_input($_POST["biljeske"]);
+			$tekst = test_input($_POST["terapija"]);
+			if(strlen($naslov )<5 || strlen($tekst)<5 ) 
+			{
+				$poruka1="Tekst je prekratak";
+			}
+			
+		} 
+	}
+
+
  if(isset($_POST['sacuvaj_nalaz']))
  {
 	
@@ -38,7 +68,8 @@
 		  $biljeske = $_POST['biljeske'];
 		  $terapija = $_POST['terapija'];
 		  
-		  
+		  if($poruka1=="")
+		  {
 		   
 		   $broj_nalaza=$xml_nalazi->children()->count();
 			$nalaz = $xml_nalazi -> addChild("nalaz");
@@ -50,12 +81,15 @@
 			$nalaz->addChild('terapija',$terapija);
 			
 			$xml_nalazi->asXML("Baza/nalazi.xml");
+			header('Refresh: 1; URL = prikazi_korisnike.php');
 		  }
-
+		  }
 
 		 
 	  
 	  }
+	  else
+		  $poruka1="greska";
 	  }				
 	   
  
@@ -108,13 +142,14 @@
 
 <div id="napisi_nalaz">
 <?php
+$id_korisnika=-1;
 if (isset($_GET["id_korisnika"]))
 {
 	  
 	  $id_korisnika= intval($_GET['id_korisnika']);	  
       
 	  
-	  
+}
 	  ?>
 <form class ="nalaz" id = "nalaz" action="napisi_nalaz.php" method="post">
 		<table id="nova_novost">
@@ -151,19 +186,23 @@ if (isset($_GET["id_korisnika"]))
 
 				<tr>
 				    <td></td>
-					<td><div id = "textError"></div></td>
+					<td></td>
 				</tr>
-
+<tr>
 					<td> <br> <button type="submit" value=<?php echo $id_korisnika ?> class="dugme" id = "dugme_izmjena" name = "sacuvaj_nalaz"> Sačuvaj nalaz <button></td>
-
+</tr>
+<tr>
+				    
+					<td><?php echo $poruka1 ?></td>
+				</tr>
         </table>
 		</form>
 		<?php
-}
-else
-{	?>
-<h2> Nalaz uspješno sacuvan. </h2>
-<?php }
+
+
+	?>
+<h1>
+<?php 
 
 ?>
 		

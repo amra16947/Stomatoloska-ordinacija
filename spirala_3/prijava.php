@@ -23,6 +23,7 @@
 <?php
 	
    $poruka = "";
+   $poruka1 = "";
    
    function test_input($data)
 	{
@@ -31,7 +32,24 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}
-	
+
+ 	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		if(empty($_POST["naslov"]) || empty($_POST["tekst"]) )
+		{
+			$poruka1="Popunite oba polja!";
+		}
+		else
+		{
+			$naslov = test_input($_POST["naslov"]);
+			$tekst = test_input($_POST["tekst"]);
+			if(strlen($tekst)<5) 
+			{
+				$poruka1="Tekst je prekratak";
+			}
+			
+		} 
+	}
 	
  	
 	   
@@ -47,7 +65,8 @@
 			   
 			   foreach($xml->children() as $un)
 			   { 
-			   if($un->username == $username &&  $password == $un->password){
+			   if($un->username == $username &&  $password == $un->password)
+			     {
 			            
 					     $_SESSION['username'] = $username;
 						   $_SESSION['password'] = $password;;
@@ -55,7 +74,8 @@
 						 header('Refresh: 1; URL = prijava.php');
 					
 				 }
-					
+				 else
+					$poruka = "Pokušajte ponovo!";
 
 			   }
 			   
@@ -67,8 +87,7 @@
 	   $poruka = "Prazna polja!";
    }
    
-   if($poruka=="")
-   {
+   
    
     if(isset($_POST['dodaj_novost']))
 	{
@@ -81,6 +100,8 @@
 	  {
 	    $xml_novosti = simplexml_load_file('Baza/novosti.xml');
 	
+	if($poruka1=="")
+	{
 		   $broj_novosti=$xml_novosti->children()->count();
 			$novost = $xml_novosti ->addChild("novost");
 			
@@ -89,9 +110,10 @@
 			$novost->addChild('tekst',$tekst);
 			
 			$xml_novosti->asXML("Baza/novosti.xml");
+	}
 			
 	}
-	}
+	
    }
 
 ?>
@@ -149,15 +171,14 @@
 
 <div id="admin_forma_novost">
 
- <form class ="novosti_forma" id = "novosti_forma" action="prijava.php" method="post" onsubmit="return provjeriNovosti()" >
+ <form class ="novosti_forma" id = "novosti_forma" action="prijava.php" method="post" >
 		<table id="nova_novost">
-		       <tr>
+		        <tr>
 					  <td colspan="2" > <label id="novost1"> Dodaj novost</label> </td>
-					
 				</tr>
 				<tr>
 					<td> <label> Naslov: </label></td>
-					<td> <input type="text" name="naslov" id = "Naslov"></td>
+					<td> <input type="text" name="naslov" id = "naslov_novost"></td>
 				</tr>
 				
 				<tr>
@@ -167,26 +188,21 @@
 				
 				<tr>
 					<td> <label> Tekst:  </label></td>
-					<td> <textarea type="text" name="tekst" id = "Tekst" ></textarea><td>
+					<td> <textarea type="text" name="tekst" id = "tekst_novost" ></textarea><td>
 				</tr>
 				
-
 				<tr>
 				    <td></td>
-					<td><div id = "textError"></div></td>
+					
 				</tr>
-<tr>
+				
+                <tr>
 					<td> <br> <input type="submit" value="Dodaj novost" class="dugme" id = "dugme_dodaj" name = "dodaj_novost"> </td>
-					</tr>
-					
-					<tr>
-				    
-					<td><?php $poruka ?></div></td>
-				</tr>
-					
-
+			    </tr>
+					<tr><td> <?php echo $poruka ?> </td> </tr>
+	
         </table>
-		</form>
+	</form>
 
 
 </div>
@@ -341,7 +357,7 @@ elseif(!isset($_SESSION['username']))
 					
 				</tr>
 				<tr>
-				    <td></td>
+				<td></td>
 					<td><?php echo $poruka ?></td>
 				</tr>
 			</table>

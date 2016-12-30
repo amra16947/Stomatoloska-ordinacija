@@ -1,13 +1,21 @@
 
-#prijava
+#dugme_nalaz
 {
+	background-color: rgba(56, 56, 56, 0.43);
 	border: 1px solid black;
+	text-decoration: none;
 	font-family: Kaushan Script, sans-serif;
 	font-size: 18px;
-	margin-top: 10px;
-	margin-left: 10px;
-	height: 40px;
+	color: #ffcccc;
+	
+	display: block;
 	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	text-align: center;
+	margin-left: 10%;
+	margin-bottom: 8%;
 }
 
 
@@ -219,7 +227,18 @@ li
 	
 }
 
-#dugme_obrisi
+#dugme_obrisi, #prijava
+{
+	border: 1px solid black;
+	font-family: Kaushan Script, sans-serif;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-left: 10px;
+	height: 40px;
+	width: 150px;
+}
+
+#dugme1
 {
 	border: 1px solid black;
 	font-family: Kaushan Script, sans-serif;

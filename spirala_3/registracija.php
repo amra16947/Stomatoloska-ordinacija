@@ -20,7 +20,7 @@
 
 <?php
 
-
+$poruka="";
 $greske= false;
  $imeError="";
  $prezimeError="";
@@ -47,7 +47,7 @@ $greske= false;
 		else
 		{
 			$ime = test_input($_POST["ime"]);
-			if (!preg_match("/^[a-zA-Z]{3,}$/",$ime)) 
+			if (!preg_match("/^[a-zA-Z]{3,15}$/",$ime)) 
 			{
 				$imeError = "Ime mora sadržavati bar 3 slova."; 
 				$greske= true;
@@ -63,9 +63,9 @@ $greske= false;
 		else
 		{
 			$prezime = test_input($_POST["prezime"]);
-			if (!preg_match("/^[a-zA-Z]{3,}$/",$prezime)) 
+			if (!preg_match("/^[a-zA-Z]{3,20}$/",$prezime)) 
 			{
-				$prezimeError = "Prezime mora sadržavati bar 3 slova."; 
+				$prezimeError = "Prezime mora sadržavati bar 3 slova,a ne vise od 20"; 
 				$greske= true;
 			}
 		}
@@ -80,9 +80,9 @@ $greske= false;
 		else
 		{
 			$username = test_input($_POST["username"]);
-			if (!preg_match("/^[a-zA-Z0-9]{5,}$/",$username)) 
+			if (!preg_match("/^[a-zA-Z0-9]{5,20}$/",$username)) 
 			{
-				$usernameError = "Username smije sadržavali slova i brojeve, minimalna dužina je 5."; 
+				$usernameError = "Username smije sadržavali slova i brojeve, minimalna dužina je 5,a ne vise od 20"; 
 				$greske= true;
 			}
 		}
@@ -107,6 +107,8 @@ $greske= false;
 				$greske= true;
 			}
 		}
+		
+		
 	}
  
    if(isset($_POST['signup']))
@@ -124,21 +126,22 @@ $greske= false;
 	  $potvrda_lozinka = md5($_POST['password1']);
 	  
 	  
-	  $username_je_zauzet = false;
-	  $potvrda = false;
+	 
 	  if(file_exists('Baza/korisnici.xml'))
 	  {
 	           $xml_novi_korisnik = simplexml_load_file('Baza/korisnici.xml');
 			   $broj_korisnika=$xml_novi_korisnik->children()->count();
+			   $svi_korisnici=$xml_novi_korisnik->children();
 			   
-			   foreach($xml_novi_korisnik->korisnik->username as $un)
+			   for($i=0; $i<$broj_korisnika; $i++)
 			   {
-			      if($username == $un)
+			      if(intval($username) == intval($svi_korisnici->username))
 				  { $usernameError="Username je već zauzet. Izaberite ponovo.";
-                    $greske= true;			  }
+                    
+					break;			  }
 				
 			   }
-
+              
 		   
 		  if($imeError=="" && $prezimeError=="" && $usernameError=="" && $passwordError=="")
 		  {

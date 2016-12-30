@@ -21,7 +21,34 @@
 <?php
 
 	  $greska="";
-	
+	  $poruka1="";
+   
+   function test_input($data)
+	{
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+
+ 	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		if(empty($_POST['naslov2']) || empty($_POST['tekst2']) )
+		{
+			$poruka1="Popunite oba polja!";
+			echo $poruka1;
+		}
+		else
+		{
+			$naslov = test_input($_POST['naslov']);
+			$tekst = test_input($_POST['tekst']);
+			if(strlen($tekst)<5) 
+			{
+				$poruka1="Tekst je prekratak";
+			}
+			
+		} 
+	}
 	 
 	  
 
@@ -37,8 +64,10 @@ if (isset($_POST['izmjena_novost123']))
 	  {
 	           $xml_izmjena_novosti = simplexml_load_file('Baza/novosti.xml');
 			   $broj=$xml_izmjena_novosti->children()->count();
-			   $lista_novosti = $xml_izmjena_novosti->children(); 
+			   $lista_novosti = $xml_izmjena_novosti->children();
 			   
+	   if($poruka1 == "")
+	   {
 			   for($i=0; $i<$broj; $i++)
 			   {  
 			          if($lista_novosti[$i] -> id == $id)
@@ -54,8 +83,11 @@ if (isset($_POST['izmjena_novost123']))
 			   
 			$xml_izmjena_novosti->asXML('Baza/novosti.xml');
 			header('Refresh: 1; URL = prikazi_novosti.php');
+	   }
     
- }
+      }
+ else
+	 $poruka1="Greska prilikom ucitavanja XML-a.";
  
  
  }
@@ -93,18 +125,12 @@ if (isset($_POST['izmjena_novost123']))
 	 
 	  
 	  if (isset($_GET["id_novosti"]))
-	  {
+	  { 
 	  $id= intval($_GET['id_novosti']);	  
       $xml_izmjeni = simplexml_load_file('Baza/novosti.xml');
 	  $prebroj = $xml_izmjeni->children()->count();	
      
-     if($id>$prebroj || $id<=0)
-	 {
-		 $greska="Greška prilikom slanja parametra";
-	 }
-	 else
-	 {
-		 
+     
 		  $xml_izmjeni = simplexml_load_file('Baza/novosti.xml');
 	       $prebroj = $xml_izmjeni->children()->count();
 	       $novost = $xml_izmjeni->children();
@@ -122,7 +148,7 @@ if (isset($_POST['izmjena_novost123']))
 				   }
 			   }
 			   $greska="";
-		?> 
+	  }?> 
 
        		 
 
@@ -149,7 +175,7 @@ if (isset($_POST['izmjena_novost123']))
 	<div class="izmjena_novosti">
 	
    
-	 <form class ="novosti_izmjena" id = "novosti_izmjena" action="prikazi_novosti.php" method="post" onsubmit="return provjeriNovosti()">
+	 <form class ="novosti_izmjena" id = "novosti_izmjena" action="prikazi_novosti.php" method="post" >
 		<table id="nova_novost">
 		       <tr>
 					  <td colspan="2" > <label id="novost1"> Uredi novost:</label> </td>
@@ -173,11 +199,15 @@ if (isset($_POST['izmjena_novost123']))
 
 				<tr>
 				    <td></td>
-					<td><div id = "textError"></div></td>
+					<td><?php echo $greska ?></td>
 				</tr>
-
-					<td> <br> <button type="submit"  class="dugme" id = "dugme_izmjena" value="<?php echo  $id ?>" name = "izmjena_novost123"> Sacuvaj izmjene </button></td>
-
+<tr>
+					<td><button type="submit"  class="dugme" id = "dugme_izmjena" value="<?php echo  $id ?>" name = "izmjena_novost123"> Sacuvaj izmjene </button></td>
+</tr>
+				<tr>
+				  
+					<td><?php echo $poruka1 ?></td>
+				</tr>
         </table>
 		</form>
 	
@@ -185,21 +215,12 @@ if (isset($_POST['izmjena_novost123']))
 	
 	
 	</div>
-	  
-	  
-	  
-	  
-	<?php  
-	  	 }
-	  }
-?>
-
 
 </div>
 
 </div>
 
-
+</body>
 
 </html>
 
