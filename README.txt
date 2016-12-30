@@ -77,3 +77,22 @@ sprala_2 - sadrzi JavaScript fajlove, html, css i sve pratece slike
 validacija.js - funkcije vezane za validaciju
 funkcije.js - nalaze se funkcije za ajax i galeriju
 Novosti.html - glavna stranica, ostalo su podstranice 
+___________________________________________________
+
+I  - Sta je uradeno?
+
+a)Uradena serijalizacija podataka u XML, i to serijalizirani korisnici, zatim novosti te nalazi. Sve je izvalidirano u phpu i
+stranica je zašticena od XSS-a, koriten je html special chars.
+Korisnik može pregledat svoje nalaze, dok admin dodaje, ureduje i brise novosti, admin moze brisati korisnike, i moze dodavati nalaze(ne 
+moze ih brisati i uredivati-iz razloga jer i mi kad odemo doktoru jedno sto se napise ne mjenja se).
+Adminov username je admin, a password je admin123
+
+b) Adminu je omogucen download podataka o korisnicima/pacijentima. U csv fajl su ubaceni podaci o korisniku: ime, prezime, username
+
+c)Moguce je preuzeti pdf file sa podacima o korisniku.
+
+d)Uradena pretraga koja  se vrši po poljima ime i username.
+
+II  - Šta nije uradeno?
+III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
+IV  - Bug-ovi koje ste primijetili ali ne znate rješenje

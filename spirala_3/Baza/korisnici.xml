@@ -1,0 +1,3 @@
+<?xml version="1.0"?>
+<root>
+<korisnik><id>1</id><titula>admin</titula><ime>Admin</ime><prezime>Admin</prezime><username>admin</username><password>0192023a7bbd73250516f069df18b500</password><password1>0192023a7bbd73250516f069df18b500</password1></korisnik><korisnik><id>2</id><titula>gost</titula><ime>amra</ime><prezime>mujcinovic</prezime><username>amra123</username><password>061a1e19d65b146108de89da2eae88fb</password><password1>061a1e19d65b146108de89da2eae88fb</password1></korisnik><korisnik><id>3</id><titula>gost</titula><ime>zana</ime><prezime>smriko</prezime><username>zanica</username><password>b91382dad071f01462917a6ed54cf3ea</password><password1>39bdc755bb9e5c2bba9f95c9a3bac5c5</password1></korisnik></root>
