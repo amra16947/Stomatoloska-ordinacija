@@ -8,7 +8,7 @@
 				$broj_korisnika=$xml->children()->count();
 				$lista_korisnika = $xml->children(); 
 
-        $naslov = array('Ime' . ',', 'Prezime'. ',', 'Mail'. ',', 'Username');
+        $naslov = array('Ime' . ','. 'Prezime' .','.'Username');
 
         $csv = fopen('izvjestaj_korisnici.csv', 'w');
         fputcsv($csv, $naslov);      
@@ -18,12 +18,12 @@
 
         for ($i=0; $i < $broj_korisnika; $i++) 
         {	
-            $id	= $lista_korisnika[$i] -> id;
+           
 		    $ime = $lista_korisnika[$i] -> ime;
 			$prezime = $lista_korisnika[$i] -> prezime;
             $username = $lista_korisnika[$i] ->username;
 			
-			$korisnici[] = $id . ',' . $ime . ',' . $prezime  . ',' .  $username ;
+			$korisnici[] = $ime . ',' . $prezime  . ',' .  $username ;
 			 
 			$csv = fopen('izvjestaj_korisnici.csv', 'a');
             fputcsv($csv, $korisnici);      
