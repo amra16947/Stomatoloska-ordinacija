@@ -19,7 +19,8 @@ I  - Sta je uradeno?
 ili da se prikazu svi nalazi
 
 http://spirala-spirala4.44fs.preview.openshiftapps.com/spirala_4/Usluge.php
--nisam dobro povezala sa bazon
+-iz nekog razloga mi javlja sljedecu gresku:
+http://pokit.org/get/?cae18d1eb8c8f2608113ab95b737dfae.jpg
 
 
 II  - Šta nije uradeno?
