@@ -6,6 +6,27 @@ Opis teme:
 Stranica sluzi za informisanje vezano za usluge koje pruza 
 ordinacija.
 
+CETVRTA SPIRALA:
+
+
+I  - Sta je uradeno?
+
+
+-napravljena baza
+-napravljeno dugme xml_u_bazu koje se nalazi na prijava.php i prebacila sam sve podatke iz xml-a u bazu uz pomoc tog dugmeta
+-sve forme, unosi, izmjene se sada snimaju i brisu iz baze
+-web servisi uradjeni na primjeru nalaza, moguca pretraga po id-u korisnika ili po doktoru koji je lijecio pacijenta, 
+ili da se prikazu svi nalazi
+
+
+
+II  - Šta nije uradeno?
+III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
+Indekse korisnicima u xml-u nisam dodavala na najbolji nacin, a rješenje je kada se budu koristile baze da se koriste sekvence.
+IV  - Bug-ovi koje ste primijetili ali ne znate rješenje
+
+
+
 
 TRECA SPIRALA:
 
@@ -25,7 +46,7 @@ d)Uradena pretraga koja  se vrši po poljima ime i username.
 
 II  - Šta nije uradeno?
 III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
-Indexe korisnicima u xml-u nisam dodavala na najbolji nacin, a rješenje je kada se budu koristile baze da se koriste sekvence.
+Indekse korisnicima u xml-u nisam dodavala na najbolji nacin, a rješenje je kada se budu koristile baze da se koriste sekvence.
 IV  - Bug-ovi koje ste primijetili ali ne znate rješenje
 
 
