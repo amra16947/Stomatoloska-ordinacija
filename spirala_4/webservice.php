@@ -33,7 +33,7 @@
             else 
                 $id_korisnik = "";
             
-		if(isset ($_GET['id_korisnik']) && isset ($_GET['doktor']))
+		if(isset ($_GET['korisnik_id']) && isset ($_GET['doktor']))
 		{   $id_korisnik = $_GET['korisnik_id'];
 			$doktor = $_GET['doktor'];
             $sql = $veza->prepare("SELECT * FROM nalaz n WHERE n.doktor = :doktor AND n.id_korisnika = :id_korisnik");
