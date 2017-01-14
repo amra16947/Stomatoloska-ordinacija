@@ -38,7 +38,7 @@
 			    </li>
 				<li><a href="Kontakt.php">Kontakt</a></li>
 				<li id = "prijava"><a href="prijava.php">Postani dio tima!</a></li>
-					  <li><a href="xml_u_bazu.php">xml -> baza </a><li>
+					  
 			</ul>
 			<br>
 			</div>

@@ -18,11 +18,14 @@ I  - Sta je uradeno?
 -web servisi uradjeni na primjeru nalaza, moguca pretraga po id-u korisnika ili po doktoru koji je lijecio pacijenta, 
 ili da se prikazu svi nalazi
 
+http://spirala-spirala4.44fs.preview.openshiftapps.com/spirala_4/Usluge.php
+-nisam dobro povezala sa bazon
 
 
 II  - Šta nije uradeno?
 III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
-Indekse korisnicima u xml-u nisam dodavala na najbolji nacin, a rješenje je kada se budu koristile baze da se koriste sekvence.
+Nisam stigla pdf prebacit da je povezan sa bazom, i nisam stigla prebacit Search da je povezan sa bazom, 
+radi se na isti nacin kao i ostale php kao sto su uradjene.
 IV  - Bug-ovi koje ste primijetili ali ne znate rješenje
 
 
