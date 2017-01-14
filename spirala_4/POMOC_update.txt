@@ -1,0 +1,173 @@
+Prijavi se->>
+$veza = new PDO("mysql:dbname=sampledb;host=172.30.235.155;charset=utf8", "root", "");
+
+				$veza->exec("set names utf8");
+				$upit = $veza->prepare("SELECT * FROM korisnici WHERE username=? AND password=?;");
+				$upit->bindValue(1, $username, PDO::PARAM_STR);
+				$upit->bindValue(2, $password, PDO::PARAM_STR);
+				$upit->execute();
+
+				$korisnik = $upit->fetch();
+
+				if ($korisnik)
+				{
+					$_SESSION["username"] = $username;
+				}
+				else
+				{
+					unset($_SESSION["username"]);
+					$_SESSION["pogresan_pass"] = true;
+				}
+_______________________________________________________
+DODAVANJE NOVOSTI- //ovo greska uspjeh neuspjeh ja bi izbacila fakat ne kontam sta kako...
+ if (isset($_POST['dodaj_novost']))
+	{
+		if(!isset($_POST['tekst']) || sizeof($_POST['tekst']) < 5)
+		{
+			$greska = 1;
+			$uspjeh = 0;
+			$greska_string = "Tekst mora da sadrži bar 5 slova.";
+		}
+		elseif(!isset($_POST['naslov']) || sizeof($_POST['naslov']) == 0)
+		{
+			$uspjeh = 0;
+			$greska = 1;
+			$greska_string = "Morate unijekti naslov.";
+		}
+		else
+		{
+			$naslov = $_POST['naslov'];
+			$tekst = $_POST['tekst'];
+			$upit = $veza->prepare("INSERT INTO novost (naslov, tekst) VALUES (?, ?);");
+			$upit->bindValue(1, $naslov, PDO::PARAM_STR);
+			$upit->bindValue(2, $tekst, PDO::PARAM_STR);
+			$rezultat = $upit->execute();
+
+			if (!$rezultat) {
+				$greska = $veza->errorInfo();
+				$uspjeh = 0;
+		        print "SQL greška: " . $greska[2];
+		        exit();
+		    }
+		    else
+		    {
+				$uspjeh = 1;
+				$uspjeh_string = "Uspješno dodana vijest";
+		    }
+		}
+	}
+_____________________________________________________
+IZMJENI NOVOST
+
+	if (isset($_REQUEST['izmjena_novost123']))
+	{
+		if(!isset($_POST['tekst']) || sizeof($_POST['tekst']) < 5)
+		{
+			$greska = 1;
+			$uspjeh = 0;
+			$greska_string = "Tekst mora da sadrži bar 5 slova.";
+		}
+		elseif(!isset($_POST['naslov']) || sizeof($_POST['naslov']) == 0)
+		{
+			$uspjeh = 0;
+			$greska = 1;
+			$greska_string = "Morate unijekti naslov.";
+		}
+		else
+		{
+		    $id = $_POST['izmjena_novost123']
+			$naslov = $_POST['naslov2'];
+			$tekst = $_POST['tekst2'];
+			$upit = $veza->prepare("UPDATE novost SET naslov=?, tekst=? WHERE id=?;");
+			$upit->bindValue(1, $naslov, PDO::PARAM_STR);
+			$upit->bindValue(2, $tekst, PDO::PARAM_STR);
+			$upit->bindValue(3, $id, PDO::PARAM_INT);
+
+			$rezultat = $upit->execute();
+
+
+			if (!$rezultat) {
+				$greska_info = $veza->errorInfo();
+				$uspjeh = 0;
+		  		print "SQL greška: " . $greska_info[2];
+		        exit();
+		    }
+		    else
+		    {
+				$uspjeh = 2;
+				$greska = 0;
+				$uspjeh_string = "Uspješno editovana  novost";
+		    }
+		}
+	}
+___________________________________________________________
+OBRISI NOVOST:
+
+if (isset($_POST['obrisi']))
+	{
+		$id = $_POST['obrisi'];
+		$upit = $veza->prepare("DELETE FROM novost WHERE id=?;");
+		$upit->bindValue(1, $id, PDO::PARAM_INT);
+		$rezultat = $upit->execute();
+
+		if (!$rezultat) {
+			$greska_info = $veza->errorInfo();
+			$uspjeh = 0;
+	        print "SQL greška: " . $greska_info[2];
+	        exit();
+	    }
+	    else
+	    {
+			$uspjeh = 2;
+			$greska = 0;
+			$uspjeh_string = "Uspješno obrisana vijest";
+	    }
+	}
+________________________________________________
+Prikaz svih novosti
+<?php
+
+$upit = $veza->prepare("SELECT id, naslov, tekst FROM novost;");
+$upit->execute();
+$novosti = $upit->fetchAll();
+
+?>
+				 
+				 <?php
+		        foreach($novosti as $novost)
+			   {  ?>
+				    
+				       <form class ="lista_novosti" id = "novosti" action="prikazi_novosti.php" method="post">
+					   
+					   	<table id="nova_novost1">
+		                   <tr>
+					      <br>
+							 <label> Naslov: </label>
+                            <input id="naslov_clanak" name="naslov_clanak" Value="<?php echo $novost["naslov"] ?>" readonly></input>
+					       
+							
+					        </tr>
+							
+							<tr>
+					        <label> Tekst: </label>
+                            <input id="tekst_clanak" name="tekst_clanak" Value="<?php echo $novost["tekst"] ?>" readonly></input>
+					        <br>
+					        </tr>
+							
+							<?php
+							
+							
+							?>
+							
+                      <td> <br> <a href = "uredi_novost.php?id_novosti=<?php echo $novost["id"]>" id = "dugme_novosti_uredi" name = "dugme_uredi"> Uredi novost </td>
+					    <td> <input type="submit" value="Obriši" class="dugme_obrisi" id = "dugme1" name = "obrisi" > </td>
+					 
+					    </table>
+					   
+					</form>
+				  
+				<?php
+			   }
+			   
+	  }
+	?>
