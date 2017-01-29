@@ -22,6 +22,9 @@ http://spirala-spirala4.44fs.preview.openshiftapps.com/spirala_4/Usluge.php
 -iz nekog razloga mi javlja sljedecu gresku:
 http://pokit.org/get/?cae18d1eb8c8f2608113ab95b737dfae.jpg
 
+update: napravila sam novi accout i skoro svaki dan pokusavam postavit i uvijek dobijem ovu gresku :(
+http://pokit.org/get/?e08a510936c1b1b9edcda710f2ccdb2b.jpg
+
 
 II  - Šta nije uradeno?
 III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
